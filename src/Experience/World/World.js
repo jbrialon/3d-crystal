@@ -26,10 +26,10 @@ export default class World {
 
       this.debugFolder
         .add(this.options, "revealAnimation")
-        .name("Reveal Crytsal Animation");
+        .name("Reveal Animation");
       this.debugFolder
         .add(this.options, "hideAnimation")
-        .name("Hide Crytsal Animation");
+        .name("Hide Animation");
     }
 
     // Wait for resources to be loaded
