@@ -27,6 +27,8 @@ export default class Particles {
     this.setGeometry();
     this.setMaterial();
     this.setPoints();
+
+    // Debug
     this.setDebug();
   }
 

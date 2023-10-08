@@ -25,16 +25,7 @@ export default class World {
     };
 
     // Debug
-    if (this.debug.active) {
-      this.debugFolder = this.debug.ui.addFolder("World");
-
-      this.debugFolder
-        .add(this.options, "revealAnimation")
-        .name("Reveal Animation");
-      this.debugFolder
-        .add(this.options, "hideAnimation")
-        .name("Hide Animation");
-    }
+    this.setDebug();
 
     // Wait for resources to be loaded
     this.resources.on("ready", () => {
@@ -94,6 +85,18 @@ export default class World {
     if (this.crystal) this.crystal.addAnimation();
   }
 
+  setDebug() {
+    if (this.debug.active) {
+      this.debugFolder = this.debug.ui.addFolder("World");
+
+      this.debugFolder
+        .add(this.options, "revealAnimation")
+        .name("Reveal Animation");
+      this.debugFolder
+        .add(this.options, "hideAnimation")
+        .name("Hide Animation");
+    }
+  }
   update() {
     if (this.crystal) this.crystal.update();
     if (this.particles) this.particles.update();

@@ -32,10 +32,11 @@ export default class Crystal {
     // Setup
     this.resource = this.resources.items.crystalModel;
 
-    this.setDebug();
-
     this.setModel();
     this.setAnimation();
+
+    // Debug
+    this.setDebug();
   }
 
   setModel() {
@@ -158,10 +159,8 @@ export default class Crystal {
     this.animation.mixer.update(this.time.delta * 0.001);
     // Rotate the model on the z-axis
     this.model.rotation.y += this.options.rotationSpeed;
-    if (this.hasRevealAnimationEnded) {
-      this.model.position.y =
-        Math.sin(this.time.elapsed * this.options.hoverSpeed) *
-        this.options.hoverAmplitude;
-    }
+    this.model.position.y =
+      Math.sin(this.time.elapsed * this.options.hoverSpeed) *
+      this.options.hoverAmplitude;
   }
 }

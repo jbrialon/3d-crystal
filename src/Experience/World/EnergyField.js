@@ -1,5 +1,4 @@
 import * as THREE from "three";
-import gsap from "gsap";
 
 import Experience from "../Experience.js";
 import vertexShader from "../../shaders/EnergyField/vertex.glsl";
@@ -20,11 +19,13 @@ export default class EnergyField {
 
     this.count = 2000;
 
+    // Setup
     this.setPositions();
     this.setGeometry();
     this.setMaterial();
     this.setPoints();
 
+    // Debug
     this.setDebug();
   }
 

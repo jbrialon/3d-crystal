@@ -9,9 +9,11 @@ export default class Environment {
     this.debug = this.experience.debug;
 
     // Setup
-    this.setDebug();
     this.setAmbientLight();
     this.setSunLight();
+
+    // Debug
+    this.setDebug();
   }
 
   setAmbientLight() {
