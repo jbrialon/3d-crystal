@@ -12,7 +12,6 @@ export default class World {
     this.scene = this.experience.scene;
     this.resources = this.experience.resources;
     this.debug = this.experience.debug;
-    this.sound = this.experience.sound;
 
     // Options
     this.options = {
@@ -45,7 +44,7 @@ export default class World {
       this.environment = new Environment();
 
       this.energyfieldOne = new EnergyField({
-        pointA: new THREE.Vector3(0.3, -3, 0),
+        pointA: new THREE.Vector3(0.3, -100, 0),
         pointB: this.options.pointB,
         controlPoint1: new THREE.Vector3(4, -4.0, -8),
         controlPoint2: new THREE.Vector3(6, 5.0, 5.0),
@@ -90,6 +89,9 @@ export default class World {
   hideAnimation() {
     this.crystal.hideAnimation();
     this.particles.hideAnimation();
+  }
+  animationManager() {
+    if (this.crystal) this.crystal.addAnimation();
   }
 
   update() {

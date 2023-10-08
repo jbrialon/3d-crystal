@@ -15,7 +15,7 @@ export default class Particles {
 
     // Options
     this.options = {
-      particlesCount: 200,
+      particlesCount: 2000,
       particlesColor: "#73332c", // Default color
       particlesOpacity: 1,
       revealAnimation: () => {
@@ -37,9 +37,9 @@ export default class Particles {
     this.scaleArray = new Float32Array(this.options.particlesCount * 1);
 
     for (let i = 0; i < this.options.particlesCount; i++) {
-      this.positionArray[i * 3 + 0] = (Math.random() - 0.5) * 3;
-      this.positionArray[i * 3 + 1] = (Math.random() - 0.5) * 5 + 8;
-      this.positionArray[i * 3 + 2] = (Math.random() - 0.5) * 3;
+      this.positionArray[i * 3 + 0] = (Math.random() - 0.5) * 9;
+      this.positionArray[i * 3 + 1] = (Math.random() - 0.5) * 10 + 8;
+      this.positionArray[i * 3 + 2] = (Math.random() - 0.5) * 9;
 
       this.scaleArray[i] = Math.random();
     }

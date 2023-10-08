@@ -102,6 +102,8 @@ export default class Crystal {
       ); // Offset the position animation by -2 seconds relative to the previous animation
   }
 
+  addAnimation() {}
+
   setAnimation() {
     this.animation = {};
     this.animation.mixer = new THREE.AnimationMixer(this.model);
