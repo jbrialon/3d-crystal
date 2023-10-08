@@ -29,20 +29,10 @@ export default class Crystal {
       },
     };
 
-    // Debug
-    if (this.debug.active) {
-      this.debugFolder = this.debug.ui.addFolder("Crystal");
-
-      this.debugFolder
-        .add(this.options, "revealAnimation")
-        .name("Reveal Crytsal Animation");
-      this.debugFolder
-        .add(this.options, "hideAnimation")
-        .name("Hide Crytsal Animation");
-    }
-
     // Setup
     this.resource = this.resources.items.crystalModel;
+
+    this.setDebug();
 
     this.setModel();
     this.setAnimation();
@@ -63,23 +53,7 @@ export default class Crystal {
 
     this.material.transparent = true;
 
-    if (this.debug.active) {
-      this.debugFolder
-        .add(this.options, "rotationSpeed")
-        .name("Rotation Speed");
-      this.debugFolder
-        .add(this.options, "hoverAmplitude")
-        .name("Hover Amplitude")
-        .min(0.001)
-        .max(0.4);
-      this.debugFolder
-        .add(this.options, "hoverSpeed")
-        .name("Hover Speed")
-        .min(0.001)
-        .max(0.01);
-    }
-
-    this.parentObject.position.y = 10;
+    // this.parentObject.position.y = 10;
     this.parentObject.add(this.model);
     this.scene.add(this.parentObject);
   }
@@ -146,6 +120,35 @@ export default class Crystal {
     smallRockOne.play();
     smallRockTwo.play();
     smallRockThree.play();
+  }
+
+  setDebug() {
+    if (this.debug.active) {
+      this.debugFolder = this.debug.ui.addFolder("Crystal");
+
+      // Animation
+      this.debugFolder
+        .add(this.options, "revealAnimation")
+        .name("Reveal Crytsal Animation");
+      this.debugFolder
+        .add(this.options, "hideAnimation")
+        .name("Hide Crytsal Animation");
+
+      // Crystal
+      this.debugFolder
+        .add(this.options, "rotationSpeed")
+        .name("Rotation Speed");
+      this.debugFolder
+        .add(this.options, "hoverAmplitude")
+        .name("Hover Amplitude")
+        .min(0.001)
+        .max(0.4);
+      this.debugFolder
+        .add(this.options, "hoverSpeed")
+        .name("Hover Speed")
+        .min(0.001)
+        .max(0.01);
+    }
   }
 
   update() {

@@ -3,8 +3,8 @@ import { gsap } from "gsap";
 
 import Experience from "../Experience";
 
-import vertexShader from "../../Shaders/Particles/vertex.glsl";
-import fragmentShader from "../../Shaders/Particles/fragment.glsl";
+import vertexShader from "../../shaders/Particles/vertex.glsl";
+import fragmentShader from "../../shaders/Particles/fragment.glsl";
 
 export default class Particles {
   constructor() {
@@ -15,22 +15,19 @@ export default class Particles {
 
     // Options
     this.options = {
-      particlesCount: 75,
+      particlesCount: 200,
       particlesColor: "#73332c", // Default color
-      particlesOpacity: 0,
+      particlesOpacity: 1,
       revealAnimation: () => {
         this.revealAnimation();
       },
     };
 
-    if (this.debug.active) {
-      this.debugFolder = this.debug.ui.addFolder("Particles");
-    }
-
     // Setup
     this.setGeometry();
     this.setMaterial();
     this.setPoints();
+    this.setDebug();
   }
 
   setGeometry() {
@@ -72,19 +69,6 @@ export default class Particles {
       vertexShader: vertexShader,
       fragmentShader: fragmentShader,
     });
-
-    if (this.debug.active) {
-      this.debugFolder
-        .add(this.options, "revealAnimation")
-        .name("Reveal Particles Animation");
-      this.debugFolder.addColor(this.options, "particlesColor").onChange(() => {
-        this.material.uniforms.uColor.value.set(this.options.particlesColor);
-      });
-      this.debugFolder
-        .add(this.material.uniforms.uOpacity, "value")
-        .min(0)
-        .max(1);
-    }
   }
 
   setPoints() {
@@ -100,12 +84,31 @@ export default class Particles {
       delay: 3,
     });
   }
+
   hideAnimation() {
     gsap.to(this.material.uniforms.uOpacity, {
       value: 0,
       duration: 2,
     });
   }
+
+  setDebug() {
+    if (this.debug.active) {
+      this.debugFolder = this.debug.ui.addFolder("Particles");
+
+      this.debugFolder
+        .add(this.options, "revealAnimation")
+        .name("Reveal Particles Animation");
+      this.debugFolder.addColor(this.options, "particlesColor").onChange(() => {
+        this.material.uniforms.uColor.value.set(this.options.particlesColor);
+      });
+      this.debugFolder
+        .add(this.material.uniforms.uOpacity, "value")
+        .min(0)
+        .max(1);
+    }
+  }
+
   update() {
     this.material.uniforms.uTime.value = this.time.elapsedTime;
   }

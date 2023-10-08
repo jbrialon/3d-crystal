@@ -1,4 +1,5 @@
 import * as THREE from "three";
+import { gsap } from "gsap";
 
 import Sizes from "./Utils/Sizes.js";
 import Time from "./Utils/Time.js";
@@ -30,6 +31,10 @@ export default class Experience {
     this.canvas = canvas;
 
     // Setup
+    this.timeline = gsap.timeline({
+      paused: true,
+    });
+
     this.debug = new Debug();
     this.stats = new Stats();
     this.sizes = new Sizes();
@@ -59,6 +64,7 @@ export default class Experience {
   }
 
   update() {
+    this.timeline.time(this.time.elapsed);
     this.stats.begin();
     this.camera.update();
     this.world.update();
