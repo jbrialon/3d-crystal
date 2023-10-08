@@ -47,7 +47,7 @@ export default class World {
       });
 
       this.energyfieldTwo = new EnergyField({
-        pointA: new THREE.Vector3(0.3, 100, 20),
+        pointA: new THREE.Vector3(0.3, 100, -200),
         pointB: this.options.pointB,
         controlPoint1: new THREE.Vector3(0, -3.0, -15),
         controlPoint2: new THREE.Vector3(-8, 10.0, 4.0),
@@ -59,7 +59,7 @@ export default class World {
       });
 
       this.energyfieldThree = new EnergyField({
-        pointA: new THREE.Vector3(0.3, -100, 20),
+        pointA: new THREE.Vector3(0.3, -100, 200),
         pointB: this.options.pointB,
         controlPoint1: new THREE.Vector3(0, -3.0, 10),
         controlPoint2: new THREE.Vector3(8, 10.0, 4.0),

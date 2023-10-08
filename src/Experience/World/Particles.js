@@ -18,6 +18,7 @@ export default class Particles {
       particlesCount: 2000,
       particlesColor: "#73332c", // Default color
       particlesOpacity: 1,
+      rotationSpeed: 0.001,
       revealAnimation: () => {
         this.revealAnimation();
       },
@@ -112,6 +113,7 @@ export default class Particles {
   }
 
   update() {
+    this.points.rotation.y -= this.options.rotationSpeed;
     this.material.uniforms.uTime.value = this.time.elapsedTime;
   }
 }
